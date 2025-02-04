@@ -113,11 +113,11 @@ bool BMP::save(const std::string& _fname)
     header.width = width;
     header.height = height;
 
-    header.fsi = data.size() + sizeof(header);
+    header.fsi = data.size() + header.ofs;
     header.dsi = data.size();
 
-    ofs.write(reinterpret_cast<const char*>(&header), sizeof(header));
-    ofs.write(reinterpret_cast<const char*>(data.data()), data.size());
+    ofs.write(reinterpret_cast<const char*>(&header), header.ofs);
+    ofs.write(reinterpret_cast<const char*>(data.data()), header.dsi);
     ofs.close();
 
     return true;
