@@ -20,10 +20,24 @@
     <Filter Include="Data Compression\Concrete\Single Algorithm">
       <UniqueIdentifier>{54c982ec-5fec-448b-b71d-04be2e834bd0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data Header">
+      <UniqueIdentifier>{96e43bc0-398e-4929-9cad-133b7157923c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageFile.h">
       <Filter>Data Compression\Base</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderBMP.h">
+      <Filter>Data Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ImageFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
