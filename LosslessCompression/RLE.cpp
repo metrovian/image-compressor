@@ -103,5 +103,5 @@ bool RLE::encode(const std::string& _fname)
     ofs.write(reinterpret_cast<const char*>(comp.data()), header.dsi);
     ofs.close();
 
-    return true;
+    return comp.size() < data.size();
 }

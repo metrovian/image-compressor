@@ -5,12 +5,6 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPara
     switch (msg) 
     {
 
-    case WM_CLOSE:
-    {
-        DestroyWindow(hwnd);
-        break;
-    }
-
     case WM_DESTROY:
     {
         PostQuitMessage(0);
@@ -33,12 +27,15 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
     RegisterClass(&wndc);
 
     RLE ori;
-    ori.load("x64/test1.bmp");
-    ori.encode("x64/test1.rle");
+    ori.load("x64/test2.bmp");
+    if (!ori.encode("x64/test2.rle"))
+    {
+        MessageBox(NULL, L"Encode Failed : Increased Result", L"RLE Compression", FALSE);
+    }
 
     RLE rle;
-    rle.decode("x64/test1.rle");
-    rle.save("x64/test1_decode.bmp");
+    rle.decode("x64/test2.rle");
+    rle.save("x64/test2_decode.bmp");
     rle.render(hInstance, nShowCmd);
 
     return 0;
