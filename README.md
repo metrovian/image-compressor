@@ -1,0 +1,1 @@
+# windows-math-image-compressor
