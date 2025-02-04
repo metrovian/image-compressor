@@ -1,11 +1,13 @@
 #include "RLE.h"
 
-bool RLE::load_comp(const std::string& _fname)
+bool RLE::decode(const std::string& _fname)
 {
-    return false;
+    if (data.empty()) return false;
+    return true;
 }
 
-bool RLE::save_comp(const std::string& _fname)
+bool RLE::encode(const std::string& _fname)
 {
-    return false;
+    if (data.empty()) return false;
+    return true;
 }

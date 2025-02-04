@@ -29,14 +29,14 @@ protected: /* extension */
 	static std::string name(const std::string& _fname);
 	static std::string extension(const std::string& _fname);
 
-public: /* bitmap display */
+public: /* display */
 	bool render(HINSTANCE _winst, int _ncmds);
 
-public: /* raw file */
+public: /* raw */
 	bool load(const std::string& _fname);
 	bool save(const std::string& _fname);
 
-public: /* compressed file */
-	virtual bool load_comp(const std::string& _fname);
-	virtual bool save_comp(const std::string& _fname);
+public: /* compression */
+	virtual bool decode(const std::string& _fname);
+	virtual bool encode(const std::string& _fname);
 };

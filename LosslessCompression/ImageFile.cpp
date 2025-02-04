@@ -122,12 +122,12 @@ bool ImageFile::save(const std::string& _fname)
     return true;
 }
 
-bool ImageFile::load_comp(const std::string& _fname)
+bool ImageFile::decode(const std::string& _fname)
 {
     return false;
 }
 
-bool ImageFile::save_comp(const std::string& _fname)
+bool ImageFile::encode(const std::string& _fname)
 {
     return false;
 }

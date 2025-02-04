@@ -6,7 +6,7 @@ class RLE : public ImageFile
 protected: /* data */
 	std::vector<uint8_t> comp;
 
-public: /* compressed file */
-	virtual bool load_comp(const std::string& _fname);
-	virtual bool save_comp(const std::string& _fname);
+public: /* compression */
+	virtual bool decode(const std::string& _fname);
+	virtual bool encode(const std::string& _fname);
 };
