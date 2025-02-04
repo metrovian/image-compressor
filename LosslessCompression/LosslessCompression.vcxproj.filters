@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Data Compression">
+      <UniqueIdentifier>{cefbf0ba-57b0-44dd-9075-bfa6fa31c364}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Compression\Base">
+      <UniqueIdentifier>{f3e59dfe-8f07-4109-a234-797ebd00df6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Compression\Concrete">
+      <UniqueIdentifier>{850be184-8d39-485e-b6ff-ab3be9dc434d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Compression\Concrete\Multiple Algorithm">
+      <UniqueIdentifier>{5deddd65-b09b-490a-823d-0914660bb0ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Compression\Concrete\Single Algorithm">
+      <UniqueIdentifier>{54c982ec-5fec-448b-b71d-04be2e834bd0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ImageFile.h">
+      <Filter>Data Compression\Base</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
