@@ -55,7 +55,7 @@ bool RLE::encode(const std::string& _fname)
 {
     if (data.empty()) return false;
 
-    uint64_t max = 756;
+    uint64_t max = 765;
     uint64_t runc = 0;
     uint64_t now = 0;
     uint64_t next = 0;
@@ -73,7 +73,7 @@ bool RLE::encode(const std::string& _fname)
             next = data[i + runc + 2] + (next << 8);
 
             if (next != now) break;
-            if (runc > max) break;
+            if (runc >= max) break;
         }
 
         comp.push_back(static_cast<uint8_t>(runc / 3));

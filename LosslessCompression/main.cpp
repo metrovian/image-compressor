@@ -27,15 +27,15 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
     RegisterClass(&wndc);
 
     RLE ori;
-    ori.load("x64/test2.bmp");
-    if (!ori.encode("x64/test2.rle"))
+    ori.load("x64/test3.bmp");
+    if (!ori.encode("x64/test3.rle"))
     {
         MessageBox(NULL, L"Encode Failed : Increased Result", L"RLE Compression", FALSE);
     }
 
     RLE rle;
-    rle.decode("x64/test2.rle");
-    rle.save("x64/test2_decode.bmp");
+    rle.decode("x64/test3.rle");
+    rle.save("x64/test3_decode.bmp");
     rle.render(hInstance, nShowCmd);
 
     return 0;
