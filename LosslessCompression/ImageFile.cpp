@@ -1,30 +1,18 @@
 #include "ImageFile.h"
 
+std::string ImageFile::path(const std::string& _fname)
+{
+    return _fname.substr(0, _fname.find_last_of('/'));
+}
+
+std::string ImageFile::name(const std::string& _fname)
+{
+    return _fname.substr(_fname.find_last_of('/') + 1);
+}
+
 std::string ImageFile::extension(const std::string& _fname)
 {
-    return std::string(std::find(_fname.begin(), _fname.end(), '.') + 1, _fname.end());
-}
-
-bool ImageFile::load(const std::string& _fname)
-{
-    std::string ext = extension(_fname);
-
-    if (ext == "bmp") return load_bmp(_fname);
-    if (ext == "png") return load_png(_fname);
-    if (ext == "webp") return load_webp(_fname);
-
-    return false;
-}
-
-bool ImageFile::save(const std::string& _fname)
-{
-    std::string ext = extension(_fname);
-
-    if (ext == "bmp") return save_bmp(_fname);
-    if (ext == "png") return save_png(_fname);
-    if (ext == "webp") return save_webp(_fname);
-
-    return false;
+    return _fname.substr(_fname.find_last_of('.') + 1);
 }
 
 bool ImageFile::render(HINSTANCE _winst, int _ncmds)
@@ -33,16 +21,16 @@ bool ImageFile::render(HINSTANCE _winst, int _ncmds)
 
     HWND hwnd = CreateWindow
     (
-        L"DefaultWindow", 
-        L"Image Compressor", 
+        L"DefaultWindow",
+        L"Image Compressor",
         WS_CAPTION | WS_SYSMENU,
-        CW_USEDEFAULT, 
-        CW_USEDEFAULT, 
-        width, 
-        height, 
-        NULL, 
-        NULL, 
-        _winst, 
+        CW_USEDEFAULT,
+        CW_USEDEFAULT,
+        width,
+        height,
+        NULL,
+        NULL,
+        _winst,
         NULL
     );
 
@@ -74,12 +62,12 @@ bool ImageFile::render(HINSTANCE _winst, int _ncmds)
     return true;
 }
 
-bool ImageFile::load_bmp(const std::string& _fname)
+bool ImageFile::load(const std::string& _fname)
 {
     HeaderBMP header;
     std::ifstream ifs(_fname, std::ios::binary);
 
-    if (!ifs.is_open()) 
+    if (!ifs.is_open())
     {
         std::cerr << "Open Error : " << _fname << std::endl;
         return false;
@@ -110,22 +98,12 @@ bool ImageFile::load_bmp(const std::string& _fname)
     return true;
 }
 
-bool ImageFile::load_png(const std::string& _fname)
-{
-    return false;
-}
-
-bool ImageFile::load_webp(const std::string& _fname)
-{
-    return false;
-}
-
-bool ImageFile::save_bmp(const std::string& _fname)
+bool ImageFile::save(const std::string& _fname)
 {
     HeaderBMP header;
     std::ofstream ofs(_fname, std::ios::binary);
 
-    if (!ofs.is_open()) 
+    if (!ofs.is_open())
     {
         std::cerr << "Open Error : " << _fname << std::endl;
         return false;
@@ -144,12 +122,12 @@ bool ImageFile::save_bmp(const std::string& _fname)
     return true;
 }
 
-bool ImageFile::save_png(const std::string& _fname)
+bool ImageFile::load_comp(const std::string& _fname)
 {
     return false;
 }
 
-bool ImageFile::save_webp(const std::string& _fname)
+bool ImageFile::save_comp(const std::string& _fname)
 {
     return false;
 }

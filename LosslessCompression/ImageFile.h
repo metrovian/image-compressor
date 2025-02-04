@@ -25,22 +25,18 @@ public: /* constructor */
 	~ImageFile() = default;
 
 protected: /* extension */
-	std::string extension(const std::string& _fname);
+	static std::string path(const std::string& _fname);
+	static std::string name(const std::string& _fname);
+	static std::string extension(const std::string& _fname);
 
-public: /* file */
+public: /* bitmap display */
+	bool render(HINSTANCE _winst, int _ncmds);
+
+public: /* raw file */
 	bool load(const std::string& _fname);
 	bool save(const std::string& _fname);
 
-public: /* viewer */
-	bool render(HINSTANCE _winst, int _ncmds);
-
-public: /* virtual */
-	virtual bool load_bmp(const std::string& _fname);
-	virtual bool load_png(const std::string& _fname);
-	virtual bool load_webp(const std::string& _fname);
-
-public: /* virtual */
-	virtual bool save_bmp(const std::string& _fname);
-	virtual bool save_png(const std::string& _fname);
-	virtual bool save_webp(const std::string& _fname);
+public: /* compressed file */
+	virtual bool load_comp(const std::string& _fname);
+	virtual bool save_comp(const std::string& _fname);
 };
