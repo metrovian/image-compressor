@@ -1,21 +1,22 @@
-#include "ImageFile.h"
+#include "BMP.h"
+#include "HeaderBMP.h"
 
-std::string ImageFile::path(const std::string& _fname)
+std::string BMP::path(const std::string& _fname)
 {
     return _fname.substr(0, _fname.find_last_of('/'));
 }
 
-std::string ImageFile::name(const std::string& _fname)
+std::string BMP::name(const std::string& _fname)
 {
     return _fname.substr(_fname.find_last_of('/') + 1);
 }
 
-std::string ImageFile::extension(const std::string& _fname)
+std::string BMP::extension(const std::string& _fname)
 {
     return _fname.substr(_fname.find_last_of('.') + 1);
 }
 
-bool ImageFile::render(HINSTANCE _winst, int _ncmds)
+bool BMP::render(HINSTANCE _winst, int _ncmds)
 {
     if (data.empty()) return false;
 
@@ -62,7 +63,7 @@ bool ImageFile::render(HINSTANCE _winst, int _ncmds)
     return true;
 }
 
-bool ImageFile::load(const std::string& _fname)
+bool BMP::load(const std::string& _fname)
 {
     HeaderBMP header;
     std::ifstream ifs(_fname, std::ios::binary);
@@ -98,7 +99,7 @@ bool ImageFile::load(const std::string& _fname)
     return true;
 }
 
-bool ImageFile::save(const std::string& _fname)
+bool BMP::save(const std::string& _fname)
 {
     HeaderBMP header;
     std::ofstream ofs(_fname, std::ios::binary);
@@ -112,7 +113,7 @@ bool ImageFile::save(const std::string& _fname)
     header.width = width;
     header.height = height;
 
-    header.fsi = data.size() + 0x0036;
+    header.fsi = data.size() + sizeof(header);
     header.dsi = data.size();
 
     ofs.write(reinterpret_cast<const char*>(&header), sizeof(header));
@@ -122,12 +123,12 @@ bool ImageFile::save(const std::string& _fname)
     return true;
 }
 
-bool ImageFile::decode(const std::string& _fname)
+bool BMP::decode(const std::string& _fname)
 {
     return false;
 }
 
-bool ImageFile::encode(const std::string& _fname)
+bool BMP::encode(const std::string& _fname)
 {
     return false;
 }

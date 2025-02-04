@@ -6,12 +6,7 @@
 #include <sstream>
 #include <windows.h>
 
-#include "HeaderBMP.h"
-
-#include <windows.h>
-#include <vector>
-
-class ImageFile
+class BMP
 {
 protected: /* data */
 	std::vector<uint8_t> data;
@@ -21,8 +16,8 @@ public: /* dimension */
 	uint64_t height = 0;
 
 public: /* constructor */
-	ImageFile() = default;
-	~ImageFile() = default;
+	BMP() = default;
+	~BMP() = default;
 
 protected: /* extension */
 	static std::string path(const std::string& _fname);
