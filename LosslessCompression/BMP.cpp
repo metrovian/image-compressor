@@ -20,29 +20,29 @@ bool BMP::render(HINSTANCE _winst, int _ncmds)
 {
     if (data.empty()) return false;
 
-    HWND hwnd = CreateWindow
+    RECT rect = { 0, 0, width, height };
+    HWND hwnd;
+    BITMAPINFO bmi = { 0 };
+    PAINTSTRUCT ps;
+    MSG msg;
+
+    AdjustWindowRect(&rect, WS_CAPTION | WS_SYSMENU, FALSE);
+
+    hwnd = CreateWindow
     (
         L"DefaultWindow",
         L"Image Compressor",
         WS_CAPTION | WS_SYSMENU,
         CW_USEDEFAULT,
         CW_USEDEFAULT,
-        width,
-        height,
+        rect.right - rect.left,
+        rect.bottom - rect.top,
         NULL,
         NULL,
         _winst,
         NULL
     );
 
-    ShowWindow(hwnd, _ncmds);
-    UpdateWindow(hwnd);
-    InvalidateRect(hwnd, NULL, TRUE);
-
-    PAINTSTRUCT ps;
-    HDC hdc = BeginPaint(hwnd, &ps);
-
-    BITMAPINFO bmi = { 0 };
     bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
     bmi.bmiHeader.biWidth = width;
     bmi.bmiHeader.biHeight = height;
@@ -50,10 +50,13 @@ bool BMP::render(HINSTANCE _winst, int _ncmds)
     bmi.bmiHeader.biBitCount = 24;
     bmi.bmiHeader.biCompression = BI_RGB;
 
-    SetDIBitsToDevice(hdc, 0, 0, width, height, 0, 0, 0, height, data.data(), &bmi, DIB_RGB_COLORS);
+    ShowWindow(hwnd, _ncmds);
+    UpdateWindow(hwnd);
+    InvalidateRect(hwnd, NULL, TRUE);
+
+    SetDIBitsToDevice(BeginPaint(hwnd, &ps), 0, 0, width, height, 0, 0, 0, height, data.data(), &bmi, DIB_RGB_COLORS);
     EndPaint(hwnd, &ps);
 
-    MSG msg;
     while (GetMessage(&msg, NULL, 0, 0))
     {
         TranslateMessage(&msg);
