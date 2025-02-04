@@ -129,10 +129,12 @@
   <ItemGroup>
     <ClInclude Include="HeaderBMP.h" />
     <ClInclude Include="ImageFile.h" />
+    <ClInclude Include="RLE.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageFile.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RLE.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
