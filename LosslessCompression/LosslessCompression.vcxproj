@@ -128,11 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="HeaderBMP.h" />
-    <ClInclude Include="ImageFile.h" />
+    <ClInclude Include="HeaderRLE.h" />
+    <ClInclude Include="BMP.h" />
     <ClInclude Include="RLE.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ImageFile.cpp" />
+    <ClCompile Include="BMP.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RLE.cpp" />
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "ImageFile.h"
+#include "RLE.h"
 
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -32,12 +32,14 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
     wndc.lpszClassName = L"DefaultWindow";
     RegisterClass(&wndc);
 
-    ImageFile image;
-    image.load("x64/test1.bmp");
-    image.render(hInstance, nShowCmd);
+    RLE ori;
+    ori.load("x64/test1.bmp");
+    ori.encode("x64/test1.rle");
 
-    image.load("x64/test2.bmp");
-    image.render(hInstance, nShowCmd);
+    RLE rle;
+    rle.decode("x64/test1.rle");
+    rle.save("x64/test1_decode.bmp");
+    rle.render(hInstance, nShowCmd);
 
     return 0;
 }

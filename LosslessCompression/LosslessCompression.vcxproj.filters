@@ -25,7 +25,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ImageFile.h">
+    <ClInclude Include="BMP.h">
       <Filter>Data Compression\Base</Filter>
     </ClInclude>
     <ClInclude Include="HeaderBMP.h">
@@ -34,9 +34,12 @@
     <ClInclude Include="RLE.h">
       <Filter>Data Compression\Concrete\Single Algorithm</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderRLE.h">
+      <Filter>Data Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ImageFile.cpp">
+    <ClCompile Include="BMP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">

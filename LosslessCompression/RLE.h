@@ -1,7 +1,7 @@
 #pragma once
-#include "ImageFile.h"
+#include "BMP.h"
 
-class RLE : public ImageFile
+class RLE : public BMP
 {
 protected: /* data */
 	std::vector<uint8_t> comp;
