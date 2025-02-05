@@ -12,10 +12,10 @@ struct HeaderBMP
     int32_t height;
     uint16_t colp = 0x0001;
     uint16_t depth = 0x0018;
-    uint32_t comp = 0;
+    uint32_t comp = 0x0000;
     uint32_t dsi;
-    int32_t resx = 0x0B13;
-    int32_t resy = 0x0B13;
+    int32_t resx = 0x0000;
+    int32_t resy = 0x0000;
     uint32_t colu = 0x0000;
     uint32_t coli = 0x0000;
 };

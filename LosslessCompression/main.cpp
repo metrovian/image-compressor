@@ -1,15 +1,9 @@
-#include "ImageFile.h"
+#include "RLE.h"
 
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg) 
     {
-
-    case WM_CLOSE:
-    {
-        DestroyWindow(hwnd);
-        break;
-    }
 
     case WM_DESTROY:
     {
@@ -32,12 +26,17 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
     wndc.lpszClassName = L"DefaultWindow";
     RegisterClass(&wndc);
 
-    ImageFile image;
-    image.load("x64/test1.bmp");
-    image.render(hInstance, nShowCmd);
+    RLE ori;
+    ori.load("x64/test3.bmp");
+    if (!ori.encode("x64/test3.rle"))
+    {
+        MessageBox(NULL, L"Encode Failed : Increased Result", L"RLE Compression", FALSE);
+    }
 
-    image.load("x64/test2.bmp");
-    image.render(hInstance, nShowCmd);
+    RLE rle;
+    rle.decode("x64/test3.rle");
+    rle.save("x64/test3_decode.bmp");
+    rle.render(hInstance, nShowCmd);
 
     return 0;
 }

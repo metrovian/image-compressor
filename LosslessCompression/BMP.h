@@ -1,0 +1,37 @@
+#pragma once
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <windows.h>
+
+class BMP
+{
+protected: /* data */
+	std::vector<uint8_t> data;
+
+public: /* dimension */
+	uint64_t width = 0;
+	uint64_t height = 0;
+
+public: /* constructor */
+	BMP() = default;
+	~BMP() = default;
+
+protected: /* extension */
+	static std::string path(const std::string& _fname);
+	static std::string name(const std::string& _fname);
+	static std::string extension(const std::string& _fname);
+
+public: /* display */
+	bool render(HINSTANCE _winst, int _ncmds);
+
+public: /* raw */
+	bool load(const std::string& _fname);
+	bool save(const std::string& _fname);
+
+public: /* compression */
+	virtual bool decode(const std::string& _fname);
+	virtual bool encode(const std::string& _fname);
+};
