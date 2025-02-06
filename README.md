@@ -2,7 +2,7 @@
 Personal mathematical software to understand image compression in depth.
 <br/></br>
 ## Lossless Compression ##
-- Run-length encoding ( RLE )
+- Run-length encoding
 - Huffman coding
 - Lempel coding ( LZ77 )
 - Portable network graphics ( PNG )
