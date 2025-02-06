@@ -2,8 +2,11 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <queue>
 #include <string>
 #include <sstream>
+#include <unordered_map>
+#include <unordered_set>
 #include <windows.h>
 
 class BMP

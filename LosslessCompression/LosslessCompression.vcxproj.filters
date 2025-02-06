@@ -37,6 +37,12 @@
     <ClInclude Include="HeaderRLE.h">
       <Filter>Data Header</Filter>
     </ClInclude>
+    <ClInclude Include="HUFF.h">
+      <Filter>Data Compression\Concrete\Single Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderHUFF.h">
+      <Filter>Data Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BMP.cpp">
@@ -46,6 +52,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RLE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HUFF.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

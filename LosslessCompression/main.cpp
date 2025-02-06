@@ -1,4 +1,5 @@
 #include "RLE.h"
+#include "HUFF.h"
 
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -18,25 +19,39 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPara
     return 0;
 }
 
+int WinSimpleErrorMessage(const wchar_t* msg)
+{
+    MessageBox(NULL, msg, L"SYSTEM", FALSE);
+    exit(-1);
+}
+
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
 {
+    MessageBox(NULL, L"Program Start", L"SYSTEM", FALSE);
+
     WNDCLASS wndc = { 0 };
     wndc.lpfnWndProc = WndProc;
     wndc.hInstance = hInstance;
     wndc.lpszClassName = L"DefaultWindow";
     RegisterClass(&wndc);
 
-    RLE ori;
-    ori.load("x64/test3.bmp");
-    if (!ori.encode("x64/test3.rle"))
-    {
-        MessageBox(NULL, L"Encode Failed : Increased Result", L"RLE Compression", FALSE);
-    }
+    std::string name = "x64/test3";
+    std::string ext1 = ".bmp";
+    std::string ext2 = ".huff";
 
-    RLE rle;
-    rle.decode("x64/test3.rle");
-    rle.save("x64/test3_decode.bmp");
-    rle.render(hInstance, nShowCmd);
+    BMP* engine = new HUFF;
+
+    engine->load(name + ext1);
+
+    if (!engine->encode(name + ext2)) WinSimpleErrorMessage(L"Encode Error");
+    if (!engine->decode(name + ext2)) WinSimpleErrorMessage(L"Decode Error");
+    
+    engine->save(name + "_decode" + ext1);
+    engine->render(hInstance, nShowCmd);
+
+    delete engine;
+
+    MessageBox(NULL, L"Program End", L"SYSTEM", FALSE);
 
     return 0;
 }
