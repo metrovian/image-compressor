@@ -6,14 +6,19 @@ class HUFF : public BMP
 protected: /* struct */
 	struct node
 	{
+	public: /* data */
 		uint8_t pval = 0;
 		uint64_t freq = 0;
-		node* left = NULL;
-		node* right = NULL;
 
+	public: /* pointer */
+		node* left = nullptr;
+		node* right = nullptr;
+
+	public: /* operator */
 		bool operator>(const node& _node);
 		bool operator<(const node& _node);
 
+	public: /* constructor */
 		node(uint8_t _pval, uint64_t _freq) : pval(_pval), freq(_freq) {};
 	};
 

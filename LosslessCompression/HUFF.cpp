@@ -23,7 +23,7 @@ bool HUFF::greater(node* _node, node* _mode)
 
 bool HUFF::free(node* _node)
 {
-    if (!_node) return false;
+    if (_node == nullptr) return false;
 
     free(_node->left);
     free(_node->right);
@@ -35,9 +35,9 @@ bool HUFF::free(node* _node)
 
 bool HUFF::match(node* _node, std::vector<bool> _code)
 {
-    if (!_node) return false;
+    if (_node == nullptr) return false;
 
-    if (!_node->left && !_node->right) 
+    if (_node->left == nullptr && _node->right == nullptr)
     {
         code[_node->pval] = _code;
     }
@@ -56,7 +56,110 @@ bool HUFF::match(node* _node, std::vector<bool> _code)
 
 bool HUFF::decode(const std::string& _fname)
 {
-    return false;
+    HeaderHUFF header;
+    std::ifstream ifs(_fname, std::ios::binary);
+
+    if (!ifs.is_open())
+    {
+        std::cerr << "Open Error : " << _fname << std::endl;
+        return false;
+    }
+
+    ifs.read(reinterpret_cast<char*>(&header), sizeof(HeaderHUFF));
+
+    if (header.type != 0x5548)
+    {
+        std::cerr << "Header Error : " << header.type << std::endl;
+        return false;
+    }
+
+    if (header.depth != 0x0018)
+    {
+        std::cerr << "Header Error : " << header.depth << std::endl;
+        return false;
+    }
+
+    width = header.width;
+    height = header.height;
+
+    comp.resize(header.dsi);
+
+    std::vector<bool> cbts;
+    std::priority_queue<node*, std::vector<node*>, decltype(&HUFF::greater)> heap(&HUFF::greater);
+
+    uint8_t key = 0;
+    uint64_t val = 0;
+
+    ifs.read(reinterpret_cast<char*>(comp.data()), header.dsi);
+
+    for (uint64_t i = 0; i < comp.size(); ++i)
+    {
+        for (uint64_t j = 0; j < 8; ++j)
+        {
+            cbts.push_back(comp[i] & (0x80 >> j));
+        }
+    }
+
+    for (uint64_t i = 0; i < header.psi; ++i)
+    {
+        cbts.pop_back();
+    }
+
+    while 
+        (
+            ifs.read(reinterpret_cast<char*>(&key), sizeof(uint8_t)) &&
+            ifs.read(reinterpret_cast<char*>(&val), sizeof(uint64_t))
+        )
+    {
+        heap.push(new node(key, val));
+    }
+
+    ifs.close();
+
+    while (heap.size() > 1)
+    {
+        node* left = heap.top();
+        heap.pop();
+
+        node* right = heap.top();
+        heap.pop();
+
+        node* parent = new node(0, left->freq + right->freq);
+
+        parent->left = left;
+        parent->right = right;
+
+        heap.push(parent);
+    }
+
+    node* root = heap.top();
+    node* cur = root;
+
+    heap.pop();
+
+    data.clear();
+
+    for (uint64_t i = 0; i < cbts.size(); ++i)
+    {
+        if (cur != nullptr)
+        {
+            if (cbts[i]) cur = cur->right;
+            else cur = cur->left;
+
+            if (cur != nullptr)
+            {
+                if (cur->left == nullptr && cur->right == nullptr)
+                {
+                    data.push_back(cur->pval);
+                    cur = root;
+                }
+            }
+        }
+    }
+
+    free(root);
+
+    return true;
 }
 
 bool HUFF::encode(const std::string& _fname)
@@ -65,7 +168,7 @@ bool HUFF::encode(const std::string& _fname)
 
     std::unordered_map<uint8_t, uint64_t> map;
     std::priority_queue<node*, std::vector<node*>, decltype(&HUFF::greater)> heap(&HUFF::greater);
-    
+
     for (uint64_t i = 0; i < data.size(); ++i)
     {
         ++map[data[i]];
@@ -94,6 +197,8 @@ bool HUFF::encode(const std::string& _fname)
 
     node* root = heap.top();
     heap.pop();
+
+    code.clear();
 
     match(root, std::vector<bool>());
     free(root);
@@ -142,18 +247,20 @@ bool HUFF::encode(const std::string& _fname)
     header.width = width;
     header.height = height;
 
-    header.fsi = comp.size() + header.ofs;
+    header.fsi = comp.size() + map.size() + header.ofs ;
     header.dsi = comp.size();
+    header.psi = 0x08 - count;
 
     ofs.write(reinterpret_cast<const char*>(&header), header.ofs);
     ofs.write(reinterpret_cast<const char*>(comp.data()), header.dsi);
 
     for (const auto& pair : map)
     {
-        ofs << pair.first << pair.second;
+        ofs.write(reinterpret_cast<const char*>(&pair.first), sizeof(uint8_t));
+        ofs.write(reinterpret_cast<const char*>(&pair.second), sizeof(uint64_t));
     }
 
     ofs.close();
 
-    return comp.size() < data.size();
+    return true;
 }
