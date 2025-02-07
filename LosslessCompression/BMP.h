@@ -12,7 +12,8 @@
 class BMP
 {
 protected: /* data */
-	std::vector<uint8_t> data;
+	std::vector<uint8_t> raw;
+	std::vector<uint8_t> comp;
 
 public: /* dimension */
 	uint64_t width = 0;

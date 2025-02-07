@@ -23,7 +23,6 @@ protected: /* struct */
 	};
 
 protected: /* data */
-	std::vector<uint8_t> comp;
 	std::unordered_map<uint8_t, std::vector<bool>> code;
 
 protected: /* condition */

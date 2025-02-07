@@ -34,7 +34,7 @@ bool RLE::decode(const std::string& _fname)
     ifs.read(reinterpret_cast<char*>(comp.data()), header.dsi);
     ifs.close();
 
-    data.clear();
+    raw.clear();
 
     for (uint64_t i = 0; i + 3 < comp.size(); i += 4)
     {
@@ -42,9 +42,9 @@ bool RLE::decode(const std::string& _fname)
 
         for (uint64_t j = 0; j < runc; j++) 
         {
-            data.push_back(comp[i + 1]);
-            data.push_back(comp[i + 2]);
-            data.push_back(comp[i + 3]);
+            raw.push_back(comp[i + 1]);
+            raw.push_back(comp[i + 2]);
+            raw.push_back(comp[i + 3]);
         }
     }
 
@@ -53,33 +53,33 @@ bool RLE::decode(const std::string& _fname)
 
 bool RLE::encode(const std::string& _fname)
 {
-    if (data.empty()) return false;
+    if (raw.empty()) return false;
 
     uint64_t max = 765;
     uint64_t runc = 0;
     uint64_t now = 0;
     uint64_t next = 0;
 
-    for (uint64_t i = 0; i + 2 < data.size(); i += 3) 
+    for (uint64_t i = 0; i + 2 < raw.size(); i += 3) 
     {
-        now = data[i];
-        now = data[i + 1] + (now << 8);
-        now = data[i + 2] + (now << 8);
+        now = raw[i];
+        now = raw[i + 1] + (now << 8);
+        now = raw[i + 2] + (now << 8);
 
-        for (runc = 3; i + runc + 2 < data.size(); runc += 3)
+        for (runc = 3; i + runc + 2 < raw.size(); runc += 3)
         {
-            next = data[i + runc];
-            next = data[i + runc + 1] + (next << 8);
-            next = data[i + runc + 2] + (next << 8);
+            next = raw[i + runc];
+            next = raw[i + runc + 1] + (next << 8);
+            next = raw[i + runc + 2] + (next << 8);
 
             if (next != now) break;
             if (runc >= max) break;
         }
 
         comp.push_back(static_cast<uint8_t>(runc / 3));
-        comp.push_back(data[i]);
-        comp.push_back(data[i + 1]);
-        comp.push_back(data[i + 2]);
+        comp.push_back(raw[i]);
+        comp.push_back(raw[i + 1]);
+        comp.push_back(raw[i + 2]);
 
         i += runc - 3;
     }
