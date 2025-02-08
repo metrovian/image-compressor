@@ -3,7 +3,56 @@
 
 bool LZ77::decode(const std::string& _fname)
 {
-    return false;
+    HeaderLZ77 header;
+    std::ifstream ifs(_fname, std::ios::binary);
+
+    if (!ifs.is_open())
+    {
+        std::cerr << "Open Error : " << _fname << std::endl;
+        return false;
+    }
+
+    ifs.read(reinterpret_cast<char*>(&header), sizeof(HeaderLZ77));
+
+    if (header.type != 0x5A4C)
+    {
+        std::cerr << "Header Error : " << header.type << std::endl;
+        return false;
+    }
+
+    if (header.depth != 0x0018)
+    {
+        std::cerr << "Header Error : " << header.depth << std::endl;
+        return false;
+    }
+
+    width = header.width;
+    height = header.height;
+
+    comp.resize(header.dsi);
+
+    ifs.read(reinterpret_cast<char*>(comp.data()), header.dsi);
+    ifs.close();
+
+    raw.clear();
+
+    for (uint64_t i = 0; i + 3 < comp.size(); i += 4)
+    {
+        uint16_t mao = comp[i + 1] | (static_cast<uint16_t>(comp[i]) << 8);
+        uint8_t mal = comp[i + 2];
+        uint8_t sym = comp[i + 3];
+
+        uint64_t start = raw.size() - mao;
+
+        for (uint64_t j = start; j < start + mal; j++)
+        {
+            raw.push_back(raw[j]);
+        }
+
+        raw.push_back(sym);
+    }
+
+    return true;
 }
 
 bool LZ77::encode(const std::string& _fname)
