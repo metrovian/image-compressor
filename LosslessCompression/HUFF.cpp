@@ -137,7 +137,7 @@ bool HUFF::decode(const std::string& _fname)
 
     heap.pop();
 
-    data.clear();
+    raw.clear();
 
     for (uint64_t i = 0; i < cbts.size(); ++i)
     {
@@ -150,7 +150,7 @@ bool HUFF::decode(const std::string& _fname)
             {
                 if (cur->left == nullptr && cur->right == nullptr)
                 {
-                    data.push_back(cur->pval);
+                    raw.push_back(cur->pval);
                     cur = root;
                 }
             }
@@ -164,14 +164,14 @@ bool HUFF::decode(const std::string& _fname)
 
 bool HUFF::encode(const std::string& _fname)
 {
-    if (data.empty()) return false;
+    if (raw.empty()) return false;
 
     std::unordered_map<uint8_t, uint64_t> map;
     std::priority_queue<node*, std::vector<node*>, decltype(&HUFF::greater)> heap(&HUFF::greater);
 
-    for (uint64_t i = 0; i < data.size(); ++i)
+    for (uint64_t i = 0; i < raw.size(); ++i)
     {
-        ++map[data[i]];
+        ++map[raw[i]];
     }
 
     for (const auto& pair : map)
@@ -205,9 +205,9 @@ bool HUFF::encode(const std::string& _fname)
 
     std::vector<bool> cbts;
 
-    for (uint64_t i = 0; i < data.size(); ++i)
+    for (uint64_t i = 0; i < raw.size(); ++i)
     {
-        cbts.insert(cbts.end(), code[data[i]].begin(), code[data[i]].end());
+        cbts.insert(cbts.end(), code[raw[i]].begin(), code[raw[i]].end());
     }
 
     uint8_t byte = 0x00;

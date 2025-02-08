@@ -1,5 +1,6 @@
 #include "RLE.h"
 #include "HUFF.h"
+#include "LZ77.h"
 
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -23,6 +24,8 @@ int WinSimpleErrorMessage(const wchar_t* msg)
 {
     MessageBox(NULL, msg, L"SYSTEM", FALSE);
     exit(-1);
+
+    return -1;
 }
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
@@ -35,11 +38,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
     wndc.lpszClassName = L"DefaultWindow";
     RegisterClass(&wndc);
 
-    std::string name = "x64/test3";
+    std::string name = "x64/test4";
     std::string ext1 = ".bmp";
-    std::string ext2 = ".huff";
+    std::string ext2 = ".lz77";
 
-    BMP* engine = new HUFF;
+    BMP* engine = new LZ77;
 
     engine->load(name + ext1);
 

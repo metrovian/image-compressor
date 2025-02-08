@@ -18,7 +18,7 @@ std::string BMP::extension(const std::string& _fname)
 
 bool BMP::render(HINSTANCE _winst, int _ncmds)
 {
-    if (data.empty()) return false;
+    if (raw.empty()) return false;
 
     RECT rect = { 0, 0, width, height };
     HWND hwnd;
@@ -54,7 +54,7 @@ bool BMP::render(HINSTANCE _winst, int _ncmds)
     UpdateWindow(hwnd);
     InvalidateRect(hwnd, NULL, TRUE);
 
-    SetDIBitsToDevice(BeginPaint(hwnd, &ps), 0, 0, width, height, 0, 0, 0, height, data.data(), &bmi, DIB_RGB_COLORS);
+    SetDIBitsToDevice(BeginPaint(hwnd, &ps), 0, 0, width, height, 0, 0, 0, height, raw.data(), &bmi, DIB_RGB_COLORS);
     EndPaint(hwnd, &ps);
 
     while (GetMessage(&msg, NULL, 0, 0))
@@ -94,9 +94,9 @@ bool BMP::load(const std::string& _fname)
     width = header.width;
     height = header.height;
 
-    data.resize(header.dsi);
+    raw.resize(header.dsi);
 
-    ifs.read(reinterpret_cast<char*>(data.data()), header.dsi);
+    ifs.read(reinterpret_cast<char*>(raw.data()), header.dsi);
     ifs.close();
 
     return true;
@@ -116,11 +116,11 @@ bool BMP::save(const std::string& _fname)
     header.width = width;
     header.height = height;
 
-    header.fsi = data.size() + header.ofs;
-    header.dsi = data.size();
+    header.fsi = raw.size() + header.ofs;
+    header.dsi = raw.size();
 
     ofs.write(reinterpret_cast<const char*>(&header), header.ofs);
-    ofs.write(reinterpret_cast<const char*>(data.data()), header.dsi);
+    ofs.write(reinterpret_cast<const char*>(raw.data()), header.dsi);
     ofs.close();
 
     return true;
