@@ -4,7 +4,7 @@ Personal mathematical software to understand image compression in depth.
 ## Lossless Compression ##
 - Run-length encoding
 - Huffman coding
-- Lempel coding ( LZ77 )
+- Lempel coding ( LZ77 / LZ78 / LZW / LZSS )
 - Portable network graphics ( PNG )
 - Web picture format ( WebP )
 
