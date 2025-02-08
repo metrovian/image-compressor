@@ -20,6 +20,12 @@ bool LZ77::decode(const std::string& _fname)
         return false;
     }
 
+    if (header.ver != 0x3737)
+    {
+        std::cerr << "Header Error : " << header.ver << std::endl;
+        return false;
+    }
+
     if (header.depth != 0x0018)
     {
         std::cerr << "Header Error : " << header.depth << std::endl;
@@ -94,7 +100,7 @@ bool LZ77::encode(const std::string& _fname)
         }
 
         comp.push_back(static_cast<uint8_t>((mao >> 8) & 0xFF));
-        comp.push_back(static_cast<uint8_t>((mao & 0xFF)));
+        comp.push_back(static_cast<uint8_t>((mao) & 0xFF));
         comp.push_back(mal);
         comp.push_back(sym);
 
