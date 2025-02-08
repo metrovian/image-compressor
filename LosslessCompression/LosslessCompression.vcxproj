@@ -130,16 +130,19 @@
     <ClInclude Include="HeaderBMP.h" />
     <ClInclude Include="HeaderHUFF.h" />
     <ClInclude Include="HeaderLZ77.h" />
+    <ClInclude Include="HeaderLZ78.h" />
     <ClInclude Include="HeaderRLE.h" />
     <ClInclude Include="BMP.h" />
     <ClInclude Include="HUFF.h" />
     <ClInclude Include="LZ77.h" />
+    <ClInclude Include="LZ78.h" />
     <ClInclude Include="RLE.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BMP.cpp" />
     <ClCompile Include="HUFF.cpp" />
     <ClCompile Include="LZ77.cpp" />
+    <ClCompile Include="LZ78.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RLE.cpp" />
   </ItemGroup>

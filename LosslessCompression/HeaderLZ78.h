@@ -1,9 +1,9 @@
 #pragma once
 #pragma pack(push, 1)
-struct HeaderLZ77
+struct HeaderLZ78
 {
     uint16_t type = 0x5A4C;
-    uint16_t ver = 0x3737;
+    uint16_t ver = 0x3837;
     uint32_t fsi;
     uint32_t ofs = 0x001A;
     int32_t width;
