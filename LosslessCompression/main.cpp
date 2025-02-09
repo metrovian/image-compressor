@@ -2,6 +2,7 @@
 #include "HUFF.h"
 #include "LZ77.h"
 #include "LZ78.h"
+#include "LZW.h"
 
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -41,9 +42,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
     std::string name = "x64/test3";
     std::string ext1 = ".bmp";
-    std::string ext2 = ".lz78";
+    std::string ext2 = ".lzw";
 
-    BMP* engine = new LZ78;
+    BMP* engine = new LZW;
 
     engine->load(name + ext1);
 

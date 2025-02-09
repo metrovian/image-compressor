@@ -1,9 +1,9 @@
-#include "LZ78.h"
-#include "HeaderLZ78.h"
+#include "LZW.h"
+#include "HeaderLZW.h"
 
-bool LZ78::decode(const std::string& _fname)
+bool LZW::decode(const std::string& _fname)
 {
-    HeaderLZ78 header;
+    HeaderLZW header;
     std::ifstream ifs(_fname, std::ios::binary);
 
     if (!ifs.is_open())
@@ -12,7 +12,7 @@ bool LZ78::decode(const std::string& _fname)
         return false;
     }
 
-    ifs.read(reinterpret_cast<char*>(&header), sizeof(HeaderLZ78));
+    ifs.read(reinterpret_cast<char*>(&header), sizeof(HeaderLZW));
 
     if (header.type != 0x5A4C)
     {
@@ -20,7 +20,7 @@ bool LZ78::decode(const std::string& _fname)
         return false;
     }
 
-    if (header.ver != 0x3837)
+    if (header.ver != 0x0057)
     {
         std::cerr << "Header Error : " << header.ver << std::endl;
         return false;
@@ -42,45 +42,69 @@ bool LZ78::decode(const std::string& _fname)
 
     raw.clear();
 
-    std::vector<std::string> dict(1, "");
-    std::string ptrn = "";
+    std::unordered_map<uint32_t, std::string> dict;
+
+    for (uint64_t i = 0; i < 256; i++) 
+    {
+        dict[i] = std::string(1, static_cast<char>(i));
+    }
 
     uint32_t ival = 0;
-    uint8_t sym = 0;
+    uint32_t pval = 0;
+    uint32_t dval = 256;
 
-    for (size_t i = 0; i + 4 < comp.size(); i += 5) 
+    std::string cur = dict[pval];
+    std::string entry = dict[pval];
+
+    raw.insert(raw.end(), cur.begin(), cur.end());
+
+    pval = comp[0];
+    pval = comp[1] | (pval << 8);
+    pval = comp[2] | (pval << 8);
+    pval = comp[3] | (pval << 8);
+
+    for (size_t i = 4; i < comp.size(); i += 4) 
     {
         ival = comp[i];
         ival = comp[i + 1] | (ival << 8);
         ival = comp[i + 2] | (ival << 8);
         ival = comp[i + 3] | (ival << 8);
+        
+        if (dict.find(ival) != dict.end())
+        {
+            entry = dict[ival];
+        }
 
-        sym = comp[i + 4];
+        else if (ival == dval)
+        {
+            entry = dict[pval] + dict[pval].front();
+        }
 
-        ptrn = dict[ival];
-        ptrn += static_cast<char>(sym);
+        dict[dval++] = dict[pval] + entry.front();
+        pval = ival;
 
-        dict.push_back(ptrn);
-
-        raw.insert(raw.end(), ptrn.begin(), ptrn.end());
+        raw.insert(raw.end(), entry.begin(), entry.end());
     }
 
     return true;
 }
 
-bool LZ78::encode(const std::string& _fname)
+bool LZW::encode(const std::string& _fname)
 {
     if (raw.empty()) return false;
 
     comp.clear();
 
-    uint32_t ival = 0;
-    uint32_t dval = 0;
-
     std::unordered_map<std::string, uint32_t> dict;
     std::string ptrn = "";
 
-    dict[ptrn] = dval++;
+    uint32_t ival = 0;
+    uint32_t dval = 256;
+
+    for (uint64_t i = 0; i < 256; i++) 
+    {
+        dict[std::string(1, static_cast<char>(i))] = i;
+    }
 
     for (uint64_t i = 0; i < raw.size(); ++i)
     {
@@ -91,31 +115,26 @@ bool LZ78::encode(const std::string& _fname)
             dict[ptrn] = dval++;
 
             ival = dict[ptrn.substr(0, ptrn.size() - 1)];
+            ptrn = ptrn.back();
 
             comp.push_back(static_cast<uint8_t>((ival >> 24) & 0xFF));
             comp.push_back(static_cast<uint8_t>((ival >> 16) & 0xFF));
             comp.push_back(static_cast<uint8_t>((ival >> 8) & 0xFF));
             comp.push_back(static_cast<uint8_t>((ival) & 0xFF));
-
-            comp.push_back(ptrn.back());
-
-            ptrn.clear();
         }
     }
 
     if (!ptrn.empty()) 
     {
-        ival = dict[ptrn.substr(0, ptrn.size() - 1)];
+        ival = dict[ptrn];
 
         comp.push_back(static_cast<uint8_t>((ival >> 24) & 0xFF));
         comp.push_back(static_cast<uint8_t>((ival >> 16) & 0xFF));
         comp.push_back(static_cast<uint8_t>((ival >> 8) & 0xFF));
         comp.push_back(static_cast<uint8_t>((ival) & 0xFF));
-
-        comp.push_back(ptrn.back());
     }
 
-    HeaderLZ78 header;
+    HeaderLZW header;
     std::ofstream ofs(_fname, std::ios::binary);
 
     if (!ofs.is_open())
