@@ -55,6 +55,12 @@
     <ClInclude Include="HeaderLZ78.h">
       <Filter>Data Header</Filter>
     </ClInclude>
+    <ClInclude Include="LZW.h">
+      <Filter>Data Compression\Concrete\Single Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderLZW.h">
+      <Filter>Data Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BMP.cpp">
@@ -73,6 +79,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LZ78.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LZW.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
