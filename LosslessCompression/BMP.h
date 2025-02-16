@@ -9,7 +9,7 @@
 #include <unordered_set>
 #include <winsock2.h>
 #include <windows.h>
-#pragma comment(lib, "Ws2_32.lib")
+#pragma comment(lib, "ws2_32.lib")
 
 class BMP
 {

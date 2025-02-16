@@ -63,7 +63,7 @@ bool LZW::decode(const std::string& _fname)
     pval = comp[2] | (pval << 8);
     pval = comp[3] | (pval << 8);
 
-    for (size_t i = 4; i < comp.size(); i += 4) 
+    for (uint64_t i = 4; i < comp.size(); i += 4) 
     {
         ival = comp[i];
         ival = comp[i + 1] | (ival << 8);

@@ -74,8 +74,8 @@ std::vector<uint8_t> PNG::transform(const std::vector<uint8_t>& _bmp)
     {
         for (uint64_t j = 0; j < height; ++j)
         {
-            size_t bmpi = (height - j - 1) * pwidth + i * 3;
-            size_t pngi = (j * width + i) * 3;
+            uint64_t bmpi = (height - j - 1) * pwidth + i * 3;
+            uint64_t pngi = (j * width + i) * 3;
 
             swap[pngi + 0] = _bmp[bmpi + 2];
             swap[pngi + 1] = _bmp[bmpi + 1];
@@ -112,8 +112,8 @@ std::vector<uint8_t> PNG::inverse(const std::vector<uint8_t>& _png)
     {
         for (uint64_t j = 0; j < height; ++j)
         {
-            size_t bmpi = (height - j - 1) * pwidth + i * 3;
-            size_t pngi = (j * pwidth) + i * 3;
+            uint64_t bmpi = (height - j - 1) * pwidth + i * 3;
+            uint64_t pngi = (j * pwidth) + i * 3;
 
             ret[bmpi + 0] = fpng[pngi + 2];
             ret[bmpi + 1] = fpng[pngi + 1];
