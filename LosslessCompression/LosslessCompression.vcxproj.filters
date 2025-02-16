@@ -43,90 +43,90 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BMP.h">
+    <ClInclude Include="include\BMP.h">
       <Filter>Data Compression\Base</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderBMP.h">
+    <ClInclude Include="include\HeaderBMP.h">
       <Filter>Data Header\Standard Format</Filter>
     </ClInclude>
-    <ClInclude Include="LZ77.h">
+    <ClInclude Include="include\LZ77.h">
       <Filter>Data Compression\Concrete\Custom Format\Dictionary Based</Filter>
     </ClInclude>
-    <ClInclude Include="LZ78.h">
+    <ClInclude Include="include\LZ78.h">
       <Filter>Data Compression\Concrete\Custom Format\Dictionary Based</Filter>
     </ClInclude>
-    <ClInclude Include="LZSS.h">
+    <ClInclude Include="include\LZSS.h">
       <Filter>Data Compression\Concrete\Custom Format\Dictionary Based</Filter>
     </ClInclude>
-    <ClInclude Include="LZW.h">
+    <ClInclude Include="include\LZW.h">
       <Filter>Data Compression\Concrete\Custom Format\Dictionary Based</Filter>
     </ClInclude>
-    <ClInclude Include="HUFF.h">
+    <ClInclude Include="include\HUFF.h">
       <Filter>Data Compression\Concrete\Custom Format\Statistics Based</Filter>
     </ClInclude>
-    <ClInclude Include="RLE.h">
+    <ClInclude Include="include\RLE.h">
       <Filter>Data Compression\Concrete\Custom Format\Statistics Based</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderLZ77.h">
+    <ClInclude Include="include\HeaderLZ77.h">
       <Filter>Data Header\Custom Format\Dictionary Based</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderLZ78.h">
+    <ClInclude Include="include\HeaderLZ78.h">
       <Filter>Data Header\Custom Format\Dictionary Based</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderLZSS.h">
+    <ClInclude Include="include\HeaderLZSS.h">
       <Filter>Data Header\Custom Format\Dictionary Based</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderLZW.h">
+    <ClInclude Include="include\HeaderLZW.h">
       <Filter>Data Header\Custom Format\Dictionary Based</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderHUFF.h">
+    <ClInclude Include="include\HeaderHUFF.h">
       <Filter>Data Header\Custom Format\Statistics Based</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderRLE.h">
+    <ClInclude Include="include\HeaderRLE.h">
       <Filter>Data Header\Custom Format\Statistics Based</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderPNG.h">
+    <ClInclude Include="include\HeaderPNG.h">
       <Filter>Data Header\Standard Format</Filter>
     </ClInclude>
-    <ClInclude Include="PNG.h">
+    <ClInclude Include="include\PNG.h">
       <Filter>Data Compression\Concrete\Standard Format</Filter>
     </ClInclude>
-    <ClInclude Include="WebP.h">
+    <ClInclude Include="include\WebP.h">
       <Filter>Data Compression\Concrete\Standard Format</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderWebP.h">
+    <ClInclude Include="include\HeaderWebP.h">
       <Filter>Data Header\Standard Format</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BMP.cpp">
+    <ClCompile Include="source\BMP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RLE.cpp">
+    <ClCompile Include="source\RLE.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HUFF.cpp">
+    <ClCompile Include="source\HUFF.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LZ77.cpp">
+    <ClCompile Include="source\LZ77.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LZ78.cpp">
+    <ClCompile Include="source\LZ78.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LZW.cpp">
+    <ClCompile Include="source\LZW.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LZSS.cpp">
+    <ClCompile Include="source\LZSS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PNG.cpp">
+    <ClCompile Include="source\PNG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WebP.cpp">
+    <ClCompile Include="source\WebP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
