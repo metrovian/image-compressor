@@ -91,6 +91,12 @@
     <ClInclude Include="PNG.h">
       <Filter>Data Compression\Concrete\Standard Format</Filter>
     </ClInclude>
+    <ClInclude Include="WebP.h">
+      <Filter>Data Compression\Concrete\Standard Format</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderWebP.h">
+      <Filter>Data Header\Standard Format</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BMP.cpp">
@@ -118,6 +124,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PNG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WebP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
