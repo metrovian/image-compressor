@@ -43,7 +43,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
     wndc.lpszClassName = L"DefaultWindow";
     RegisterClass(&wndc);
 
-    std::string name = "x64/test1";
+    std::string name = "x64/test5";
     std::string ext1 = ".bmp";
     std::string ext2 = ".webp";
 

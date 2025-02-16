@@ -48,7 +48,7 @@ bool LZ78::decode(const std::string& _fname)
     uint32_t ival = 0;
     uint8_t sym = 0;
 
-    for (size_t i = 0; i + 4 < comp.size(); i += 5) 
+    for (uint64_t i = 0; i + 4 < comp.size(); i += 5) 
     {
         ival = comp[i];
         ival = comp[i + 1] | (ival << 8);
