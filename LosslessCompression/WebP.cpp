@@ -70,7 +70,7 @@ bool WebP::decode(const std::string& _fname)
     }
 
     ifs.read(reinterpret_cast<char*>(&header), sizeof(HeaderWebP));
-    ifs.seekg(0, std::ios::end);
+    ifs.seekg(0, ifs.beg);
 
     if (header.rf != 0x46464952)
     {
@@ -84,9 +84,9 @@ bool WebP::decode(const std::string& _fname)
         return false;
     }
 
-    comp.resize(header.fsi);
+    comp.resize(static_cast<uint64_t>(header.fsi + 8));
 
-    ifs.read(reinterpret_cast<char*>(comp.data()), header.fsi);
+    ifs.read(reinterpret_cast<char*>(comp.data()), static_cast<uint64_t>(header.fsi + 8));
     ifs.close();
 
     int dret = 0;
