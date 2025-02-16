@@ -14,14 +14,32 @@
     <Filter Include="Data Compression\Concrete">
       <UniqueIdentifier>{850be184-8d39-485e-b6ff-ab3be9dc434d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Compression\Concrete\Multiple Algorithm">
-      <UniqueIdentifier>{5deddd65-b09b-490a-823d-0914660bb0ea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Data Header">
       <UniqueIdentifier>{96e43bc0-398e-4929-9cad-133b7157923c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Compression\Concrete\Single Algorithm">
+    <Filter Include="Data Compression\Concrete\Custom Format">
+      <UniqueIdentifier>{5deddd65-b09b-490a-823d-0914660bb0ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Header\Custom Format">
+      <UniqueIdentifier>{d6c13e93-b4c9-4d9f-a0a0-fe63cf8f4f88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Header\Standard Format">
+      <UniqueIdentifier>{4cb00965-6766-4e90-9e5f-a490dd797190}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Compression\Concrete\Standard Format">
       <UniqueIdentifier>{54c982ec-5fec-448b-b71d-04be2e834bd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Compression\Concrete\Custom Format\Dictionary Based">
+      <UniqueIdentifier>{d55b4b4d-d3c7-4cbd-a767-7d9164427dee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Compression\Concrete\Custom Format\Statistics Based">
+      <UniqueIdentifier>{2c2d7953-acdc-491e-9c8d-a39e8b883e17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Header\Custom Format\Dictionary Based">
+      <UniqueIdentifier>{18645d4f-0c3c-4d32-9d75-316539e41848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Header\Custom Format\Statistics Based">
+      <UniqueIdentifier>{c852ecbe-0aae-4200-80b1-7d93f2800ae1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -29,43 +47,49 @@
       <Filter>Data Compression\Base</Filter>
     </ClInclude>
     <ClInclude Include="HeaderBMP.h">
-      <Filter>Data Header</Filter>
-    </ClInclude>
-    <ClInclude Include="RLE.h">
-      <Filter>Data Compression\Concrete\Single Algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="HeaderRLE.h">
-      <Filter>Data Header</Filter>
-    </ClInclude>
-    <ClInclude Include="HUFF.h">
-      <Filter>Data Compression\Concrete\Single Algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="HeaderHUFF.h">
-      <Filter>Data Header</Filter>
+      <Filter>Data Header\Standard Format</Filter>
     </ClInclude>
     <ClInclude Include="LZ77.h">
-      <Filter>Data Compression\Concrete\Single Algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="HeaderLZ77.h">
-      <Filter>Data Header</Filter>
+      <Filter>Data Compression\Concrete\Custom Format\Dictionary Based</Filter>
     </ClInclude>
     <ClInclude Include="LZ78.h">
-      <Filter>Data Compression\Concrete\Single Algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="HeaderLZ78.h">
-      <Filter>Data Header</Filter>
-    </ClInclude>
-    <ClInclude Include="LZW.h">
-      <Filter>Data Compression\Concrete\Single Algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="HeaderLZW.h">
-      <Filter>Data Header</Filter>
+      <Filter>Data Compression\Concrete\Custom Format\Dictionary Based</Filter>
     </ClInclude>
     <ClInclude Include="LZSS.h">
-      <Filter>Data Compression\Concrete\Single Algorithm</Filter>
+      <Filter>Data Compression\Concrete\Custom Format\Dictionary Based</Filter>
+    </ClInclude>
+    <ClInclude Include="LZW.h">
+      <Filter>Data Compression\Concrete\Custom Format\Dictionary Based</Filter>
+    </ClInclude>
+    <ClInclude Include="HUFF.h">
+      <Filter>Data Compression\Concrete\Custom Format\Statistics Based</Filter>
+    </ClInclude>
+    <ClInclude Include="RLE.h">
+      <Filter>Data Compression\Concrete\Custom Format\Statistics Based</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderLZ77.h">
+      <Filter>Data Header\Custom Format\Dictionary Based</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderLZ78.h">
+      <Filter>Data Header\Custom Format\Dictionary Based</Filter>
     </ClInclude>
     <ClInclude Include="HeaderLZSS.h">
-      <Filter>Data Header</Filter>
+      <Filter>Data Header\Custom Format\Dictionary Based</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderLZW.h">
+      <Filter>Data Header\Custom Format\Dictionary Based</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderHUFF.h">
+      <Filter>Data Header\Custom Format\Statistics Based</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderRLE.h">
+      <Filter>Data Header\Custom Format\Statistics Based</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderPNG.h">
+      <Filter>Data Header\Standard Format</Filter>
+    </ClInclude>
+    <ClInclude Include="PNG.h">
+      <Filter>Data Compression\Concrete\Standard Format</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +115,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LZSS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PNG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

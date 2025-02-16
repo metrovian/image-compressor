@@ -4,6 +4,7 @@
 #include "LZ78.h"
 #include "LZW.h"
 #include "LZSS.h"
+#include "PNG.h"
 
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -41,11 +42,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
     wndc.lpszClassName = L"DefaultWindow";
     RegisterClass(&wndc);
 
-    std::string name = "x64/test1";
+    std::string name = "x64/test5";
     std::string ext1 = ".bmp";
-    std::string ext2 = ".lzss";
+    std::string ext2 = ".png";
 
-    BMP* engine = new LZSS;
+    BMP* engine = new PNG;
 
     engine->load(name + ext1);
 
