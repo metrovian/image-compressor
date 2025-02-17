@@ -1,18 +1,17 @@
 # Image Compressor #
 Personal mathematical software to understand image compression in depth.
 <br/></br>
-## Lossless Compression ##
+## Destructive Compression ##
+- Chroma sub-sampling
+- Discrete cosine transform
+- Discrete wavelet transform
+- Joint photographic experts group ( JPEG )
+<br/></br>
+## Reversible Compression ##
 - Run-length encoding
 - Huffman coding
 - Lempel coding ( LZ77 / LZ78 / LZW / LZSS )
 - Portable network graphics ( PNG )
-- Web picture format ( WebP )
-<br/></br>
-## Lossy Compression ##
-- Discrete cosine transform
-- Discrete wavelet transform
-- Chroma subsampling
-- Joint photographic experts group ( JPEG )
 - Web picture format ( WebP )
 
 <br/></br>
