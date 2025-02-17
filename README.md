@@ -1,7 +1,7 @@
 # Image Compressor #
 Personal mathematical software to understand image compression in depth.
 <br/></br>
-## Destructive Compression ##
+## Perceptual Compression ##
 - Chroma sub-sampling
 - Discrete cosine transform
 - Discrete wavelet transform
