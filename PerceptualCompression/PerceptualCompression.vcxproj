@@ -129,10 +129,13 @@
   <ItemGroup>
     <ClInclude Include="BMP.h" />
     <ClInclude Include="HeaderBMP.h" />
+    <ClInclude Include="HeaderYUV.h" />
+    <ClInclude Include="YUV.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BMP.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="YUV.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
