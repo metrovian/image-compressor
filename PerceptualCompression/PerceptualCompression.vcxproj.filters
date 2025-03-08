@@ -37,12 +37,21 @@
     <ClInclude Include="BMP.h">
       <Filter>Data Compression\Base</Filter>
     </ClInclude>
+    <ClInclude Include="YUV.h">
+      <Filter>Data Compression\Concrete\Custom Format</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderYUV.h">
+      <Filter>Data Header\Custom Format</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BMP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="YUV.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
