@@ -1,4 +1,5 @@
 #include "BMP.h"
+#include "YUV.h"
 
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -36,11 +37,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
     wndc.lpszClassName = L"DefaultWindow";
     RegisterClass(&wndc);
 
-    std::string name = "x64/test5";
+    std::string name = "x64/test3";
     std::string ext1 = ".bmp";
-    std::string ext2 = ".webp";
+    std::string ext2 = ".yuv";
 
-    BMP* engine = new BMP;
+    BMP* engine = new YUV;
 
     engine->load(name + ext1);
 
