@@ -128,12 +128,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BMP.h" />
+    <ClInclude Include="DCT.h" />
     <ClInclude Include="HeaderBMP.h" />
+    <ClInclude Include="HeaderDCT.h" />
     <ClInclude Include="HeaderYUV.h" />
     <ClInclude Include="YUV.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BMP.cpp" />
+    <ClCompile Include="DCT.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="YUV.cpp" />
   </ItemGroup>

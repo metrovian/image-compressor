@@ -1,4 +1,5 @@
 #include "YUV.h"
+#include "HeaderYUV.h"
 
 std::vector<uint8_t> YUV::transform(const std::vector<uint8_t>& _bmp)
 {
