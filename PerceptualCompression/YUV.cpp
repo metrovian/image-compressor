@@ -1,4 +1,5 @@
 #include "YUV.h"
+#include "HeaderYUV.h"
 
 std::vector<uint8_t> YUV::transform(const std::vector<uint8_t>& _bmp)
 {
@@ -86,6 +87,12 @@ bool YUV::decode(const std::string& _fname)
     if (header.type != 0x5559)
     {
         std::cerr << "Header Error : " << header.type << std::endl;
+        return false;
+    }
+
+    if (header.depth != 0x0018)
+    {
+        std::cerr << "Header Error : " << header.depth << std::endl;
         return false;
     }
 
