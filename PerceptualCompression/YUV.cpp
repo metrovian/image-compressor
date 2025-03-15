@@ -90,6 +90,12 @@ bool YUV::decode(const std::string& _fname)
         return false;
     }
 
+    if (header.depth != 0x0018)
+    {
+        std::cerr << "Header Error : " << header.depth << std::endl;
+        return false;
+    }
+
     if (header.qdy != 0x0004)
     {
         std::cerr << "Header Error : " << header.qdy << std::endl;
