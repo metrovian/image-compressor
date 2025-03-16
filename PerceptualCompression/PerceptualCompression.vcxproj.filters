@@ -49,6 +49,12 @@
     <ClInclude Include="HeaderDCT.h">
       <Filter>Data Header\Custom Format</Filter>
     </ClInclude>
+    <ClInclude Include="HAAR.h">
+      <Filter>Data Compression\Concrete\Custom Format</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderHAAR.h">
+      <Filter>Data Header\Custom Format</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BMP.cpp">
@@ -61,6 +67,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DCT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HAAR.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
