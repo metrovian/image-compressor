@@ -5,6 +5,9 @@ std::vector<uint8_t> DCT::transform(const std::vector<uint8_t>& _bmp)
 {
     std::vector<uint8_t> ret(width * height * 3, 0.0);
 
+    uint64_t pwidth = (width * 3 + 3) & ~3;
+    uint64_t pmax = std::sqrt(width * height * 3.0) * 255.0;
+
     auto clamp = [](double _val)
         {
             if (_val > 255) return static_cast<uint8_t>(255);
@@ -12,9 +15,6 @@ std::vector<uint8_t> DCT::transform(const std::vector<uint8_t>& _bmp)
 
             return static_cast<uint8_t>(_val);
         };
-
-    uint64_t pwidth = (width * 3 + 3) & ~3;
-    uint64_t pmax = std::sqrt(width * height * 3.0) * 255.0;
 
     for (uint64_t u = 0; u < width * 3; ++u)
     {
@@ -53,6 +53,8 @@ std::vector<uint8_t> DCT::inverse(const std::vector<uint8_t>& _dct)
     uint64_t pwidth = (width * 3 + 3) & ~3;
     uint64_t pmax = std::sqrt(width * height * 3.0) * 255.0;
 
+    std::vector<uint8_t> ret(pwidth * height, 0.0);
+
     auto clamp = [](double _val)
         {
             if (_val > 255) return static_cast<uint8_t>(255);
@@ -60,8 +62,6 @@ std::vector<uint8_t> DCT::inverse(const std::vector<uint8_t>& _dct)
 
             return static_cast<uint8_t>(_val);
         };
-
-    std::vector<uint8_t> ret(pwidth * height, 0.0);
 
     for (uint64_t i = 0; i < width * 3; ++i)
     {
