@@ -10,6 +10,7 @@ Personal mathematical software to understand image compression in depth.
 ## Reversible Compression ##
 - Run-length encoding
 - Huffman coding
+- Golomb-Rice coding
 - Lempel-Ziv coding ( LZ77 / LZ78 / LZW / LZSS )
 - Portable network graphics ( PNG )
 - Web picture format ( WebP )
