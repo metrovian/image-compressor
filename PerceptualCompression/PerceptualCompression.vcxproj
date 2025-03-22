@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\libjpeg-3.0.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\include;C:\libjpeg-3.0.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -121,7 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\libjpeg-3.0.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\include;C:\libjpeg-3.0.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -133,24 +133,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BMP.h" />
-    <ClInclude Include="DCT.h" />
-    <ClInclude Include="HAAR.h" />
-    <ClInclude Include="HeaderBMP.h" />
-    <ClInclude Include="HeaderDCT.h" />
-    <ClInclude Include="HeaderHAAR.h" />
-    <ClInclude Include="HeaderJPEG.h" />
-    <ClInclude Include="HeaderYUV.h" />
-    <ClInclude Include="JPEG.h" />
-    <ClInclude Include="YUV.h" />
+    <ClInclude Include="include\BMP.h" />
+    <ClInclude Include="include\DCT.h" />
+    <ClInclude Include="include\HAAR.h" />
+    <ClInclude Include="include\HeaderBMP.h" />
+    <ClInclude Include="include\HeaderDCT.h" />
+    <ClInclude Include="include\HeaderHAAR.h" />
+    <ClInclude Include="include\HeaderJPEG.h" />
+    <ClInclude Include="include\HeaderYUV.h" />
+    <ClInclude Include="include\JPEG.h" />
+    <ClInclude Include="include\YUV.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BMP.cpp" />
-    <ClCompile Include="DCT.cpp" />
-    <ClCompile Include="HAAR.cpp" />
-    <ClCompile Include="JPEG.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="YUV.cpp" />
+    <ClCompile Include="source\BMP.cpp" />
+    <ClCompile Include="source\DCT.cpp" />
+    <ClCompile Include="source\HAAR.cpp" />
+    <ClCompile Include="source\JPEG.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\YUV.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

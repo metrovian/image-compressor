@@ -31,54 +31,54 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HeaderBMP.h">
+    <ClInclude Include="include\HeaderBMP.h">
       <Filter>Data Header\Standard Format</Filter>
     </ClInclude>
-    <ClInclude Include="BMP.h">
+    <ClInclude Include="include\BMP.h">
       <Filter>Data Compression\Base</Filter>
     </ClInclude>
-    <ClInclude Include="YUV.h">
+    <ClInclude Include="include\YUV.h">
       <Filter>Data Compression\Concrete\Custom Format</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderYUV.h">
+    <ClInclude Include="include\HeaderYUV.h">
       <Filter>Data Header\Custom Format</Filter>
     </ClInclude>
-    <ClInclude Include="DCT.h">
+    <ClInclude Include="include\DCT.h">
       <Filter>Data Compression\Concrete\Custom Format</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderDCT.h">
+    <ClInclude Include="include\HeaderDCT.h">
       <Filter>Data Header\Custom Format</Filter>
     </ClInclude>
-    <ClInclude Include="HAAR.h">
+    <ClInclude Include="include\HAAR.h">
       <Filter>Data Compression\Concrete\Custom Format</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderHAAR.h">
+    <ClInclude Include="include\HeaderHAAR.h">
       <Filter>Data Header\Custom Format</Filter>
     </ClInclude>
-    <ClInclude Include="JPEG.h">
+    <ClInclude Include="include\JPEG.h">
       <Filter>Data Compression\Concrete\Standard Format</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderJPEG.h">
+    <ClInclude Include="include\HeaderJPEG.h">
       <Filter>Data Header\Standard Format</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BMP.cpp">
+    <ClCompile Include="source\BMP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="YUV.cpp">
+    <ClCompile Include="source\YUV.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DCT.cpp">
+    <ClCompile Include="source\DCT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HAAR.cpp">
+    <ClCompile Include="source\HAAR.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JPEG.cpp">
+    <ClCompile Include="source\JPEG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
