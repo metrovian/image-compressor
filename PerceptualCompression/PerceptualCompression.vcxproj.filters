@@ -55,6 +55,12 @@
     <ClInclude Include="HeaderHAAR.h">
       <Filter>Data Header\Custom Format</Filter>
     </ClInclude>
+    <ClInclude Include="JPEG.h">
+      <Filter>Data Compression\Concrete\Standard Format</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderJPEG.h">
+      <Filter>Data Header\Standard Format</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BMP.cpp">
@@ -70,6 +76,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HAAR.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JPEG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
