@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\HeaderGR.h" />
     <ClInclude Include="include\HeaderBMP.h" />
     <ClInclude Include="include\HeaderHUFF.h" />
     <ClInclude Include="include\HeaderLZ77.h" />
@@ -154,6 +155,8 @@
     <ClInclude Include="include\WebP.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\GR.cpp" />
+    <ClCompile Include="include\GR.h" />
     <ClCompile Include="source\BMP.cpp" />
     <ClCompile Include="source\HUFF.cpp" />
     <ClCompile Include="source\LZ77.cpp" />

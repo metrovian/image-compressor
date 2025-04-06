@@ -6,6 +6,7 @@
 #include "LZSS.h"
 #include "PNG.h"
 #include "WebP.h"
+#include "GR.h"
 
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -43,11 +44,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
     wndc.lpszClassName = L"DefaultWindow";
     RegisterClass(&wndc);
 
-    std::string name = "x64/test5";
+    std::string name = "x64/test1";
     std::string ext1 = ".bmp";
-    std::string ext2 = ".webp";
+    std::string ext2 = ".gr";
 
-    BMP* engine = new WebP;
+    BMP* engine = new GR;
 
     engine->load(name + ext1);
 

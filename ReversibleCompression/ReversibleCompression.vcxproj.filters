@@ -97,6 +97,9 @@
     <ClInclude Include="include\HeaderWebP.h">
       <Filter>Data Header\Standard Format</Filter>
     </ClInclude>
+    <ClInclude Include="include\HeaderGR.h">
+      <Filter>Data Header\Custom Format\Statistics Based</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\BMP.cpp">
@@ -127,6 +130,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\WebP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\GR.h">
+      <Filter>Data Compression\Concrete\Custom Format\Statistics Based</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GR.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
