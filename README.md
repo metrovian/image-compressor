@@ -1,6 +1,3 @@
-# Image Compressor #
-Personal mathematical software to understand image compression in depth.
-<br/></br>
 ## Perceptual Compression ##
 - Chroma sub-sampling
 - Discrete cosine transform
