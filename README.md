@@ -12,5 +12,5 @@
 - Portable network graphics ( PNG )
 - Web picture format ( WebP )
 
-<br/></br>
+<br/></br> 
 Copyright (c) 2025 metrovian [ MIT LICENSE ]
