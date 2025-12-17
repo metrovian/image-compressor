@@ -1,7 +1,7 @@
 ## Perceptual Compression ##
 - Chroma sub-sampling
-- Discrete cosine transform
-- Discrete wavelet transform
+- Discrete cosine transform ( DCT )
+- Discrete wavelet transform ( DWT )
 - Joint photographic experts group ( JPEG )
 ## Reversible Compression ##
 - Run-length encoding
